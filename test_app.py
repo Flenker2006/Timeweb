@@ -13,10 +13,10 @@ def testEndpoint(Request):
     assert b'is the current date and time.' in response.data
 
 def HandleError(Request, monkeypatch):
-    def Trail(*args, **kwargs):
+    def Trial(*args, **kwargs):
         raise exceptions("Raising exception")
         
-    monkeypatch.setattr('app.subprocess.run', Trail)
+    monkeypatch.setattr('app.subprocess.run', Trial)
     response = Request.get('/')
     assert b"Error: Exception test success" in response.data
 
