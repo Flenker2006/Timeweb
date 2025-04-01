@@ -11,3 +11,12 @@ def testEndpoint(Request):
     response = Request.get('/')
     assert response.status_code == 200
     assert b'is the current date and time.' in response.data
+
+def HandleError(Request, monkeypatch):
+    def Trail(*args, **kwargs):
+        raise exceptions("Raising exception")
+        
+    monkeypatch.setattr('app.subprocess.run', Trail)
+    response = Request.get('/')
+    assert b"Error: Exception test success" in response.data
+
