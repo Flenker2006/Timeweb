@@ -2,4 +2,8 @@ VirtEnviDirect = venv
 
 setup:
   python3 -m venv $(VirtEnviDirect)
-$(VirtEnviDirect)/bin/pip install -r requirements.txt
+  $(VirtEnviDirect)/bin/pip install -r requirements.txt
+
+clean:
+  rm -rf $(VirtEnviDirect)
+  find . -type d -name "__pycache__" -exec rm -rf {} +
