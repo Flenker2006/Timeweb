@@ -7,3 +7,9 @@ setup:
 clean:
   rm -rf $(VirtEnviDirect)
   find . -type d -name "__pycache__" -exec rm -rf {} +
+
+test:
+  $(VirtEnviDirect)/bin/pytest
+
+run:
+  $(VirtEnviDirect)/bin/python app.py
