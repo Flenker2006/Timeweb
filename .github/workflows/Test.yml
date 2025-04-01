@@ -6,8 +6,15 @@ on:
   pull_request:
     branches:
       - main
-
-off:
-
-name: Run Tests
-run: make test
+Tasks:
+test:
+  runs-on: ubuntu-lastest
+  
+Jobs:
+  - name: Install
+    run: |
+  python3 -m venv venv
+  source venv/bin/activate
+  pip install -r requirements.txt
+- name: Tests_run
+  run: make test
